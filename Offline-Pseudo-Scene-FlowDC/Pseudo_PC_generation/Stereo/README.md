@@ -1,4 +1,4 @@
-# STereo TRansformer (STTR)
+## Please visit <a href="https://github.com/mli0603/stereo-transformer">GitHub</a> for the configuration of the running environment of the stereo depth estimation network.
 
 This is the official repo for our work [Revisiting Stereo Depth Estimation From a Sequence-to-Sequence Perspective with Transformers](https://arxiv.org/abs/2011.02910).
 
