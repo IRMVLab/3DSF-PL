@@ -1,45 +1,11 @@
 
-# PointPWC-Net: *Cost Volume on Point Clouds for (Self-) Supervised Scene Flow Estimation*
-This is the code for [PointPWC-Net](https://arxiv.org/abs/1911.12408), a deep coarse-to-fine network designed for 3D scene flow estimation from 3D point clouds. Created by <a href="http://web.engr.oregonstate.edu/~wuwen/" target="_blank">Wenxuan Wu</a>, <a href="http://web.engr.oregonstate.edu/~lif/" target="_blank">Fuxin Li</a> from Oregon State University.
-
-<img src="./images/PointPWC.png" width=100%>
-
-**Update:**
-
-* Self-supervised loss is release in model.py(multiScaleChamferSmoothCurvature).
-You can train the self-supervised model by using train_self.py.
-* Update PointConvFlow to compute the patch-to-patch cost volume.
-* Update a updated model pretrain weight to obtain a better result(*<strong>EPE3D: 0.0463 vs 0.0588</strong>*) than the original paper.
-
-## Citation
-
-If you find our work useful in your research, please consider citing:
-
-```
-@inproceedings{wu2020pointpwc,
-  title={PointPWC-Net: Cost Volume on Point Clouds for (Self-) Supervised Scene Flow Estimation},
-  author={Wu, Wenxuan and Wang, Zhi Yuan and Li, Zhuwen and Liu, Wei and Fuxin, Li},
-  booktitle={European Conference on Computer Vision},
-  pages={88--107},
-  year={2020},
-  organization={Springer}
-}
-```
-
-```
-@article{wu2019pointpwc,
-  title={PointPWC-Net: A Coarse-to-Fine Network for Supervised and Self-Supervised Scene Flow Estimation on 3D Point Clouds},
-  author={Wu, Wenxuan and Wang, Zhiyuan and Li, Zhuwen and Liu, Wei and Fuxin, Li},
-  journal={arXiv preprint arXiv:1911.12408},
-  year={2019}
-}
-```
+### Off-line training of the scene flow estimator means that the generated pseudo-LiDAR point clouds need to be saved local beforehand. Please refer to the Pseudo_PC_generation folder for networks generating pseudo-LiDAR point clouds.
 
 ## Prerequisities
 Our model is trained and tested under:
 * Python 3.6.9
 * NVIDIA GPU + CUDA CuDNN
-* PyTorch (torch == 1.5)
+* PyTorch (torch >= 1.5)
 * scipy
 * tqdm
 * sklearn
@@ -87,12 +53,7 @@ Set `data_root` in the configuration file to `SAVE_PATH` in the data preprocess 
 ```bash
 python3 train.py config_train.yaml
 ```
-After training the model with a quater dataset, one can achieve a better results as the paper by finetuning the model with the full dataset using the following command. Before running the finetuning the model, one need to set the `pretrain` to the pretrained weights. An example path is shown in the `config_train_finetune.yaml`.
-```bash
-python3 train.py config_train_finetune.yaml
-```
 
-One can train the model using the similar commend as before for self-supervised model by replacing the `train.py` to `train_self.py`.
 
 ### Evaluate
 Set `data_root` in the configuration file to `SAVE_PATH` in the data preprocess section. Then run
@@ -100,7 +61,7 @@ Set `data_root` in the configuration file to `SAVE_PATH` in the data preprocess 
 python3 evaluate.py config_evaluate.yaml
 ```
 
-We upload one pretrained model in ```pretrain_weights```.
+```pretrain_weights```.
 
 
 ## Acknowledgement
