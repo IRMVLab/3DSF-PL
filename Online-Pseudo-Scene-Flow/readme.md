@@ -27,7 +27,7 @@ python train.py config_train.yaml
 ```
 
 ## Inference
-* To evaluate a single checkpoint, run the following command with `--ckpt` to specify the checkpoint to be evaluated:
+* Please refer to <a href="https://pan.baidu.com/s/1USMcnw-hkkuP60-8P9pU8w?pwd=ck98">weights</a> for scene flow ground truth acquisition for dataset ```NuScenes``` and dataset ```Argoverse```.
 ```
 python evaluate.py config_evaluate.yaml
 ```
