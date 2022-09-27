@@ -1,5 +1,5 @@
 
-### Off-line training of the scene flow estimator means that the generated pseudo-LiDAR point clouds need to be saved local beforehand. Please refer to the Pseudo_PC_generation folder for networks generating pseudo-LiDAR point clouds.
+### Off-line training of the scene flow estimator means that the generated pseudo-LiDAR point clouds need to be saved local beforehand. Please refer to the ```Pseudo_PC_generation/ folder``` for networks generating pseudo-LiDAR point clouds.
 
 ## Prerequisities
 Our model is trained and tested under:
@@ -61,11 +61,12 @@ Set `data_root` in the configuration file to `SAVE_PATH` in the data preprocess 
 python3 evaluate.py config_evaluate.yaml
 ```
 
-```pretrain_weights```.
+For the ```pre-training model```, please refer to Baidu Cloud Link <a href="https://pan.baidu.com/s/1USMcnw-hkkuP60-8P9pU8w?pwd=ck98">GitHub</a>.
+
 
 
 ## Acknowledgement
 
-We thank [repo](https://github.com/sshaoshuai/Pointnet2.PyTorch) and [repo](https://github.com/laoreja/HPLFlowNet) for subsampling, grouping and data preprocessing related functions.
+We thank [repo](https://github.com/sshaoshuai/Pointnet2.PyTorch), [repo](https://github.com/DylanWusee/PointPWC), and [repo](https://github.com/laoreja/HPLFlowNet) for subsampling, grouping and data preprocessing related functions.
 
 
