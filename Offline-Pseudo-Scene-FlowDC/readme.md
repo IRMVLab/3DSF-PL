@@ -61,6 +61,8 @@ Set `data_root` in the configuration file to `SAVE_PATH` in the data preprocess 
 python3 evaluate.py config_evaluate.yaml
 ```
 
+To evaluate the model on the ```lidarKITTI```, ```NuScenes``` and ```Argoverse``` datasets please refer to ```Online-Pseudo-Scene-Flow```.
+
 For the ```pre-training model```, please refer to Baidu Cloud Link <a href="https://pan.baidu.com/s/1USMcnw-hkkuP60-8P9pU8w?pwd=ck98">GitHub</a>.
 
 
