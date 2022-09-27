@@ -26,8 +26,8 @@ Download the <a href="https://pan.baidu.com/s/1USMcnw-hkkuP60-8P9pU8w?pwd=ck98">
 python train.py config_train.yaml
 ```
 
-## Inference
-Please refer to <a href="https://github.com/zgojcic/Rigid3DSceneFlow">Rigid3DSceneFlow</a> for scene flow ground truth acquisition for dataset ```sfKITTI``` and dataset ```lidarKITTI```.
+## Evaluation
+* Please refer to <a href="https://github.com/zgojcic/Rigid3DSceneFlow">Rigid3DSceneFlow</a> for scene flow ground truth acquisition for dataset ```sfKITTI``` and dataset ```lidarKITTI```.
 * Please refer to <a href="https://github.com/Lilac-Lee/Neural_Scene_Flow_Prior">Neural_Scene_Flow_Prior</a> for scene flow ground truth acquisition for dataset ```NuScenes``` and dataset ```Argoverse```.
 ```
 python evaluate.py config_evaluate.yaml
