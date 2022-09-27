@@ -3,6 +3,6 @@
 (Note the modification of the data path.)
 
 ```
-python kitti_infer_pc.py
+python ./scripts/kitti_infer_pc.py
 ```
 
