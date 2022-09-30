@@ -7,7 +7,7 @@ The main purpose of this paper is to recover 3D scene flow from stereo images. T
 All the codes are tested in the following environment:
 * Linux (tested on Ubuntu 14.04/16.04)
 * Python 3.6+
-* PyTorch 1.0
+* PyTorch 1.2.0
 
 ### Install
 
