@@ -154,7 +154,8 @@ if __name__ == '__main__':
     # KITTI Dataset Pseudo-LiDAR Generation
     root_path = '/dataset/data_odometry_color/dataset/sequences/'
     inferHelper = InferenceHelper()
-    for ii in range(5, 11):
+    # Example: only generate point clouds for the second sequence. The KITTI odometer dataset has a total of 21 sequences,
+    for ii in range(2, 3):
         sequence = '{:02d}'.format(ii)
         data_len_sequence=[4540, 1100, 4660, 800, 270, 2760, 1100, 1100, 4070, 1590, 1200]
         calib_file = '../..' + root_path + sequence +'/calib/000000.txt'
