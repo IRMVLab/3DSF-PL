@@ -88,7 +88,7 @@ class InferenceHelper:
 
     @torch.no_grad()
     def predict_pil(self, pil_image, visualized=False):
-        pil_image = pil_image.resize((640, 480))
+        # pil_image = pil_image.resize((640, 480))
         img = np.asarray(pil_image) / 255.
 
         img = self.toTensor(img).unsqueeze(0).float().to(self.device)
@@ -149,25 +149,28 @@ class InferenceHelper:
 
 
 if __name__ == '__main__':
-    import matplotlib.pyplot as plt
-    from time import time
-
-    img = Image.open("test_imgs/image4.jpg")
-    start = time()
+    #import matplotlib.pyplot as plt
+    #from time import time
+    # KITTI Dataset Pseudo-LiDAR Generation
+    root_path = '/dataset/data_odometry_color/dataset/sequences/'
     inferHelper = InferenceHelper()
-    centers, pred = inferHelper.predict_pil(img)
-    pred = torch.tensor(pred.squeeze().squeeze())
-    pred = pred.numpy()
-    # print(pred,pred.shape,'####')
-    calib_file = '../../dataset/data_odometry_color/02/calib/000472.txt'
-    assert os.path.exists(calib_file)
-    calib = calibration.Calibration(calib_file)
-    pts_pc, _, _ = calib.depthmap_to_rect(pred)
-    pts_pc = calib.rect_to_lidar(pts_pc)
-    print(pts_pc.shape)
-    #PC = depth_to_pcl(pred)
-    np.save('test_imgs/depth_4.npy', pts_pc)
-    # print(f"took :{time() - start}s")
-    plt.imshow(pred.squeeze(), cmap='magma_r')
-    plt.savefig('test_imgs/depth_{}.png'.format(4))
-    # plt.show()
+    for ii in range(5, 11):
+        sequence = '{:02d}'.format(ii)
+        data_len_sequence=[4540, 1100, 4660, 800, 270, 2760, 1100, 1100, 4070, 1590, 1200]
+        calib_file = '../..' + root_path + sequence +'/calib/000000.txt'
+        assert os.path.exists(calib_file)
+        for i in range(0, data_len_sequence[ii]+1):
+            img = Image.open(root_path + sequence +'/image_2/{:06d}.png'.format(i))
+            centers, pred = inferHelper.predict_pil(img)
+            pred = torch.tensor(pred.squeeze().squeeze())
+            pred = pred.numpy()
+            calib = calibration.Calibration(calib_file)
+            lidar_pc  = calib.depthmap_to_lidar(pred)
+            # print('**', pred.shape, lidar_pc.shape)
+            np.save(root_path + sequence +'/Mono_depth/{:06d}.npy'.format(i), pred.squeeze())
+            np.save(root_path + sequence +'/Mono_PL/{:06d}.npy'.format(i), lidar_pc.squeeze())
+            if i % 50 == 0:
+                print('sequence={:011d}'.format(ii))
+                print('+++++++++++++++++++++{:06d}++++++++++++++++'.format(i))
+    # plt.imshow(pred.squeeze(), cmap='magma_r')
+    # plt.savefig('test_imgs/depth_{}.png'.format(4))
