@@ -21,7 +21,7 @@ sh build_and_install.sh
 
 
 ## Training
-Download the <a href="https://pan.baidu.com/s/1USMcnw-hkkuP60-8P9pU8w?pwd=ck98">weights</a> of the pre-trained depth estimation network and change its path in the configuration file.
+Download the <a href="https://pan.baidu.com/s/12qRpeSXpjvaTuNoNq4L7Bw?pwd=2686">weights</a> of the pre-trained depth estimation network and change its path in the configuration file.
 ```
 python train.py config_train.yaml
 ```
